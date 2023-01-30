@@ -283,10 +283,15 @@ public class GpsMockFragment extends BaseFragment implements View.OnClickListene
         locationClientOption.setOpenAutoNotifyMode();
         //设置打开自动回调位置模式，该开关打开后，期间只要定位SDK检测到位置变化就会主动回调给开发者
         // locationOption.setOpenAutoNotifyMode(3000, 1, LocationClientOption.LOC_SENSITIVITY_HIGHT)
-        mBdLocationClient = new LocationClient(getActivity());
-        mBdLocationClient.registerLocationListener(mBDAbstractLocationListener);
-        mBdLocationClient.setLocOption(locationClientOption);
-        mBdLocationClient.start();
+        try {
+            mBdLocationClient = new LocationClient(getActivity());
+            mBdLocationClient.registerLocationListener(mBDAbstractLocationListener);
+            mBdLocationClient.setLocOption(locationClientOption);
+            mBdLocationClient.start();
+        }
+        catch (Exception e) {
+            throw new RuntimeException(e);
+        }
 
         // 是否双击放大当前地图中心点 默认：false 即按照双击位置放大地图
         // 这里设置成true, 解决双击放大地图时, 中心点会被赋值给点击处的坐标, 导致mock地址和中心图标没有重合的问题.

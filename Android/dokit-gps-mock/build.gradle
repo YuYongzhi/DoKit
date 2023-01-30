@@ -78,11 +78,8 @@ dependencies {
     implementation rootProject.ext.dependencies["auto_service"]
     kapt rootProject.ext.dependencies["auto_service"]
 
-    api files('libs/BaiduLBS_Android.jar')
-
-    compileOnly rootProject.ext.dependencies["amap_location"]
-    //高德导航
-    compileOnly rootProject.ext.dependencies["amap_navi"]
-    //腾讯地图定位
-    compileOnly rootProject.ext.dependencies["tencent_location"]
+    compileOnly rootProject.ext.dependencies["baidu_location"] // 百度定位
+    compileOnly rootProject.ext.dependencies["amap_location"] // 高德定位
+    compileOnly rootProject.ext.dependencies["amap_navi"] //高德导航
+    compileOnly rootProject.ext.dependencies["tencent_location"] //腾讯地图定位
 }
